@@ -1,4 +1,5 @@
 const fs = require("fs")
+const crypto = require("crypto")
 
 // Loads environment variables from .env file (if it exists)
 require("dotenv").config()
@@ -31,22 +32,15 @@ const requestConfig = {
   // code language (only JavaScript is currently supported)
   codeLanguage: CodeLanguage.JavaScript,
   // string containing the source code to be executed
-  source: fs.readFileSync("./calculation-example.js").toString(),
-  //source: fs.readFileSync('./API-request-example.js').toString(),
-  // secrets can be accessed within the source code with `secrets.varName` (ie: secrets.apiKey). The secrets object can only contain string values.
-  secrets: { apiKey: process.env.COINMARKETCAP_API_KEY ?? '' },
+  source: fs.readFileSync("./Functions-request-source.js").toString(),
+  // secrets can be accessed within the source code with `secrets.varName` (ie: secrets.apiKey)
+  secrets: { apiKey: process.env.OUTERBRIDGE_API_KEY ?? "", sessionId: crypto.randomBytes(16).toString("hex") },
   // ETH wallet key used to sign secrets so they cannot be accessed by a 3rd party
   walletPrivateKey: process.env["PRIVATE_KEY"],
-  // args (string only array) can be accessed within the source code with `args[index]` (ie: args[0]).
-  args: ["1", "bitcoin", "btc-bitcoin", "btc", "1000000", "450"],
+  // args can be accessed within the source code with `args[index]` (ie: args[0])
+  args: ["Hello To HELLFIRE Club!"],
   // expected type of the returned value
-  expectedReturnType: ReturnType.uint256,
-  // Redundant URLs which point to encrypted off-chain secrets
-  secretsURLs: [],
-  // Default offchain secrets object used by the `functions-build-offchain-secrets` command
-  globalOffchainSecrets: {},
-  // Per-node offchain secrets objects used by the `functions-build-offchain-secrets` command
-  perNodeOffchainSecrets: [],
+  expectedReturnType: ReturnType.string,
 }
 
 module.exports = requestConfig
