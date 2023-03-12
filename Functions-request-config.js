@@ -23,7 +23,7 @@ const ReturnType = {
   Buffer: "Buffer",
 }
 
-const messageToSend = "HEY DISCORD"
+const messageToSend = "Hey Discord!"
 
 // Configure the request by setting the fields below
 const requestConfig = {
@@ -36,7 +36,7 @@ const requestConfig = {
   // string containing the source code to be executed
   source: fs.readFileSync("./Functions-request-source.js").toString(),
   // secrets can be accessed within the source code with `secrets.varName` (ie: secrets.apiKey)
-  secrets: { apiKey: process.env.OUTERBRIDGE_API_KEY ?? "", sessionId: crypto.randomBytes(16).toString("hex") },
+  secrets: { sessionId: crypto.randomBytes(16).toString("hex") },
   // ETH wallet key used to sign secrets so they cannot be accessed by a 3rd party
   walletPrivateKey: process.env["PRIVATE_KEY"],
   // args can be accessed within the source code with `args[index]` (ie: args[0])

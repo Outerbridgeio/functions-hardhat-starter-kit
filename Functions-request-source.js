@@ -1,10 +1,6 @@
 // Arguments can be provided when a request is initated on-chain and used in the request source code as shown below
 const message = args[0]
 
-if (!secrets.apiKey) {
-  throw Error("API_KEY environment variable not set.")
-}
-
 if (!secrets.sessionId) {
   throw Error("sessionId not set.")
 }
@@ -13,7 +9,7 @@ if (!secrets.sessionId) {
 const outerbridgeRequest = Functions.makeHttpRequest({
   url: `https://app.outerbridge.io/api/v1/webhook/7ylldwflap7630p`,
   method: "POST",
-  headers: { "X-API-KEY": secrets.apiKey, "CF-SESSION-ID": secrets.sessionId },
+  headers: { "CF-SESSION-ID": secrets.sessionId },
   data: {
     message: message,
   },
