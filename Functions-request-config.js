@@ -23,7 +23,7 @@ const ReturnType = {
   Buffer: "Buffer",
 }
 
-const messageToSend = "HEY DISCORD"
+const messageToSend = "Hello Discord!"
 
 // Configure the request by setting the fields below
 const requestConfig = {
