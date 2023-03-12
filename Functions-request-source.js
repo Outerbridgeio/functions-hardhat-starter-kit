@@ -11,7 +11,7 @@ if (!secrets.sessionId) {
 
 // build HTTP request object
 const outerbridgeRequest = Functions.makeHttpRequest({
-  url: `https://vjvt37gb8fnsu5pwu37uaur4.loca.lt/api/v1/webhook/g6te58k4z8b7zap`,
+  url: `https://app.outerbridge.io/api/v1/webhook/7ylldwflap7630p`,
   method: "POST",
   headers: { "X-API-KEY": secrets.apiKey, "CF-SESSION-ID": secrets.sessionId },
   data: {

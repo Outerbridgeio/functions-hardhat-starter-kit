@@ -23,6 +23,8 @@ const ReturnType = {
   Buffer: "Buffer",
 }
 
+const messageToSend = "HEY DISCORD"
+
 // Configure the request by setting the fields below
 const requestConfig = {
   // location of source code (only Inline is currently supported)
@@ -38,7 +40,7 @@ const requestConfig = {
   // ETH wallet key used to sign secrets so they cannot be accessed by a 3rd party
   walletPrivateKey: process.env["PRIVATE_KEY"],
   // args can be accessed within the source code with `args[index]` (ie: args[0])
-  args: ["Hello To HELLFIRE Club!"],
+  args: [messageToSend],
   // expected type of the returned value
   expectedReturnType: ReturnType.string,
 }
